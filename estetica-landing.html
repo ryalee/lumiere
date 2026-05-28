@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumière Estética — Beleza que transforma</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --rose: #c9a99a;
+    --rose-light: #f0e0d9;
+    --rose-dark: #8c6357;
+    --cream: #faf6f2;
+    --cream-deep: #f2ebe3;
+    --gold: #b89770;
+    --gold-light: #e8d9c4;
+    --charcoal: #2a2421;
+    --warm-gray: #7a6e68;
+    --white: #fff;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Jost', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--cream);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.5rem 4rem;
+    background: rgba(250, 246, 242, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201, 169, 154, 0.2);
+    transition: padding .3s;
+  }
+
+  .nav-logo {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    font-weight: 300;
+    letter-spacing: .12em;
+    color: var(--charcoal);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--rose); font-style: italic; }
+
+  .nav-links {
+    display: flex; gap: 2.5rem; list-style: none;
+    font-size: .8rem; letter-spacing: .15em; text-transform: uppercase; font-weight: 400;
+  }
+
+  .nav-links a {
+    color: var(--warm-gray);
+    text-decoration: none;
+    transition: color .3s;
+  }
+
+  .nav-links a:hover { color: var(--rose-dark); }
+
+  .nav-cta {
+    font-size: .75rem; letter-spacing: .15em; text-transform: uppercase;
+    padding: .65rem 1.8rem;
+    background: var(--charcoal);
+    color: var(--cream);
+    text-decoration: none;
+    border-radius: 50px;
+    transition: background .3s, transform .2s;
+  }
+
+  .nav-cta:hover { background: var(--rose-dark); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 6rem 3rem 6rem 4rem;
+    position: relative; z-index: 2;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: .7rem; letter-spacing: .25em; text-transform: uppercase;
+    color: var(--rose-dark);
+    border: 1px solid var(--rose);
+    padding: .4rem 1.2rem;
+    border-radius: 50px;
+    margin-bottom: 2.5rem;
+    width: fit-content;
+    animation: fadeUp .8s ease both;
+  }
+
+  .hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(3.5rem, 5.5vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--charcoal);
+    margin-bottom: 2rem;
+    animation: fadeUp .8s .15s ease both;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--rose-dark);
+    display: block;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    color: var(--warm-gray);
+    line-height: 1.8;
+    max-width: 400px;
+    margin-bottom: 3rem;
+    font-weight: 300;
+    animation: fadeUp .8s .3s ease both;
+  }
+
+  .hero-actions {
+    display: flex; gap: 1.2rem; align-items: center;
+    animation: fadeUp .8s .45s ease both;
+  }
+
+  .btn-primary {
+    padding: .9rem 2.4rem;
+    background: var(--charcoal);
+    color: var(--cream);
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: .8rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    transition: background .3s, transform .2s;
+  }
+
+  .btn-primary:hover { background: var(--rose-dark); transform: translateY(-2px); }
+
+  .btn-ghost {
+    font-size: .8rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    text-decoration: none;
+    display: flex; align-items: center; gap: .6rem;
+    transition: color .3s;
+  }
+
+  .btn-ghost:hover { color: var(--rose-dark); }
+
+  .btn-ghost::before {
+    content: '';
+    display: inline-block;
+    width: 30px; height: 1px;
+    background: currentColor;
+    transition: width .3s;
+  }
+
+  .btn-ghost:hover::before { width: 44px; }
+
+  .hero-right {
+    position: relative;
+    background: var(--rose-light);
+    overflow: hidden;
+    animation: fadeIn 1s .2s ease both;
+  }
+
+  .hero-image-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #f0e0d9 0%, #e8d0c5 40%, #d4b5a8 100%);
+  }
+
+  .hero-ornament {
+    position: absolute;
+    right: 4rem; bottom: 4rem;
+    width: 220px; height: 220px;
+    border: 1px solid rgba(140, 99, 87, 0.25);
+    border-radius: 50%;
+  }
+
+  .hero-ornament::after {
+    content: '';
+    position: absolute;
+    inset: 20px;
+    border: 1px solid rgba(140, 99, 87, 0.15);
+    border-radius: 50%;
+  }
+
+  .hero-stat {
+    position: absolute;
+    bottom: 3rem; left: -2rem;
+    background: var(--white);
+    border-radius: 16px;
+    padding: 1.4rem 2rem;
+    box-shadow: 0 20px 60px rgba(42,36,33,.08);
+    animation: slideIn .8s .6s ease both;
+  }
+
+  .hero-stat .number {
+    font-family: var(--font-serif);
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--charcoal);
+    line-height: 1;
+  }
+
+  .hero-stat .label {
+    font-size: .72rem;
+    color: var(--warm-gray);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-top: .3rem;
+  }
+
+  .hero-floral {
+    position: absolute;
+    top: 5rem; left: 3rem;
+    opacity: .4;
+  }
+
+  .hero-abstract {
+    position: absolute;
+    inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    opacity: .15;
+  }
+
+  /* ABOUT STRIP */
+  .strip {
+    background: var(--charcoal);
+    padding: 1.5rem 4rem;
+    display: flex; gap: 4rem; align-items: center;
+    overflow: hidden;
+  }
+
+  .strip-item {
+    display: flex; align-items: center; gap: 1rem;
+    color: rgba(250,246,242,.6);
+    font-size: .75rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .strip-dot {
+    width: 4px; height: 4px;
+    background: var(--rose);
+    border-radius: 50%;
+  }
+
+  /* SERVICES */
+  .services {
+    padding: 8rem 4rem;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: .7rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--rose-dark);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 4vw, 3.8rem);
+    font-weight: 300;
+    color: var(--charcoal);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--rose-dark); }
+
+  .section-desc {
+    color: var(--warm-gray);
+    font-size: .95rem;
+    line-height: 1.8;
+    max-width: 480px;
+    font-weight: 300;
+  }
+
+  .services-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 4rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--rose-light);
+  }
+
+  .service-card {
+    background: var(--cream);
+    padding: 3rem 2.5rem;
+    transition: background .3s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--rose);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .4s ease;
+  }
+
+  .service-card:hover { background: var(--white); }
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-icon {
+    width: 48px; height: 48px;
+    background: var(--rose-light);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.8rem;
+    font-size: 1.3rem;
+  }
+
+  .service-name {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: .8rem;
+    line-height: 1.2;
+  }
+
+  .service-desc {
+    font-size: .85rem;
+    color: var(--warm-gray);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-price {
+    font-size: .75rem;
+    letter-spacing: .12em;
+    color: var(--rose-dark);
+    text-transform: uppercase;
+    display: flex; align-items: center; gap: .6rem;
+  }
+
+  .service-price::before {
+    content: '';
+    display: block;
+    width: 20px; height: 1px;
+    background: var(--rose);
+  }
+
+  /* DIFERENTIALS */
+  .differentials {
+    background: var(--charcoal);
+    padding: 8rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .differentials::before {
+    content: 'L';
+    position: absolute;
+    top: -5rem; right: -3rem;
+    font-family: var(--font-serif);
+    font-size: 28rem;
+    font-weight: 300;
+    color: rgba(255,255,255,.02);
+    line-height: 1;
+    user-select: none;
+  }
+
+  .diff-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .diff-text .section-label { color: var(--rose); }
+  .diff-text .section-title { color: var(--cream); }
+  .diff-text .section-desc { color: rgba(250,246,242,.55); }
+
+  .diff-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .diff-item {
+    border-top: 1px solid rgba(250,246,242,.1);
+    padding-top: 1.5rem;
+  }
+
+  .diff-number {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--rose);
+    line-height: 1;
+    margin-bottom: .5rem;
+  }
+
+  .diff-title {
+    font-size: .85rem;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: .5rem;
+    letter-spacing: .05em;
+  }
+
+  .diff-desc {
+    font-size: .82rem;
+    color: rgba(250,246,242,.5);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials {
+    padding: 8rem 4rem;
+    background: var(--cream-deep);
+  }
+
+  .test-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .test-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .test-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .test-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 2.5rem;
+    position: relative;
+  }
+
+  .test-quote {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--rose-light);
+    position: absolute;
+    top: 1.5rem; right: 2rem;
+  }
+
+  .test-text {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--charcoal);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .test-author {
+    display: flex; align-items: center; gap: .8rem;
+  }
+
+  .test-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--rose-light);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-serif);
+    font-size: .9rem;
+    color: var(--rose-dark);
+  }
+
+  .test-name {
+    font-size: .82rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    letter-spacing: .05em;
+  }
+
+  .test-role {
+    font-size: .75rem;
+    color: var(--warm-gray);
+    font-weight: 300;
+  }
+
+  .test-stars {
+    display: flex; gap: .2rem; margin-bottom: 1rem;
+    font-size: .7rem;
+    color: var(--gold);
+    letter-spacing: .1em;
+  }
+
+  /* BOOKING */
+  .booking {
+    padding: 8rem 4rem;
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .booking-visual {
+    position: relative;
+  }
+
+  .booking-card {
+    background: var(--rose-light);
+    border-radius: 28px;
+    padding: 4rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .booking-card::before {
+    content: '';
+    position: absolute;
+    top: -3rem; right: -3rem;
+    width: 200px; height: 200px;
+    background: rgba(201,169,154,.35);
+    border-radius: 50%;
+  }
+
+  .booking-card::after {
+    content: '';
+    position: absolute;
+    bottom: -2rem; left: -2rem;
+    width: 120px; height: 120px;
+    background: rgba(140,99,87,.15);
+    border-radius: 50%;
+  }
+
+  .booking-badge {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: var(--white);
+    border-radius: 50px;
+    padding: .5rem 1.2rem;
+    font-size: .75rem;
+    color: var(--rose-dark);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    position: relative; z-index: 1;
+  }
+
+  .booking-badge-dot {
+    width: 6px; height: 6px;
+    background: #4caf50;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  .booking-promo {
+    font-family: var(--font-serif);
+    font-size: 2.4rem;
+    font-weight: 300;
+    color: var(--charcoal);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    position: relative; z-index: 1;
+  }
+
+  .booking-promo em { font-style: italic; color: var(--rose-dark); }
+
+  .booking-detail {
+    font-size: .85rem;
+    color: var(--warm-gray);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    position: relative; z-index: 1;
+  }
+
+  .booking-form .section-label { margin-bottom: .5rem; }
+  .booking-form .section-title { margin-bottom: .8rem; }
+  .booking-form .section-desc { margin-bottom: 2.5rem; }
+
+  .form-group { margin-bottom: 1.2rem; }
+
+  .form-group label {
+    display: block;
+    font-size: .72rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-bottom: .5rem;
+  }
+
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: .9rem 1.2rem;
+    border: 1px solid var(--gold-light);
+    border-radius: 10px;
+    background: var(--white);
+    font-family: var(--font-sans);
+    font-size: .9rem;
+    color: var(--charcoal);
+    outline: none;
+    transition: border-color .3s;
+    appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus { border-color: var(--rose); }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .btn-form {
+    width: 100%;
+    padding: 1.1rem;
+    background: var(--charcoal);
+    color: var(--cream);
+    border: none;
+    border-radius: 50px;
+    font-family: var(--font-sans);
+    font-size: .8rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background .3s, transform .2s;
+    margin-top: .5rem;
+  }
+
+  .btn-form:hover { background: var(--rose-dark); transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer {
+    background: var(--charcoal);
+    padding: 5rem 4rem 2rem;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(250,246,242,.08);
+    margin-bottom: 2rem;
+  }
+
+  .footer-brand {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: .8rem;
+  }
+
+  .footer-brand span { color: var(--rose); font-style: italic; }
+
+  .footer-tagline {
+    font-size: .82rem;
+    color: rgba(250,246,242,.45);
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 260px;
+  }
+
+  .footer-col h4 {
+    font-size: .7rem;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-col ul { list-style: none; }
+
+  .footer-col li {
+    margin-bottom: .6rem;
+  }
+
+  .footer-col a {
+    font-size: .82rem;
+    color: rgba(250,246,242,.5);
+    text-decoration: none;
+    font-weight: 300;
+    transition: color .3s;
+  }
+
+  .footer-col a:hover { color: var(--rose); }
+
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: .72rem;
+    color: rgba(250,246,242,.3);
+  }
+
+  .social-links {
+    display: flex; gap: 1rem;
+  }
+
+  .social-link {
+    width: 34px; height: 34px;
+    border: 1px solid rgba(250,246,242,.15);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+    font-size: .75rem;
+    color: rgba(250,246,242,.4);
+    transition: border-color .3s, color .3s;
+  }
+
+  .social-link:hover { border-color: var(--rose); color: var(--rose); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .4; }
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    nav { padding: 1.2rem 2rem; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { min-height: 50vh; }
+    .services-header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .diff-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .test-grid { grid-template-columns: 1fr; }
+    .booking { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .services, .differentials, .testimonials, .booking { padding: 5rem 1.5rem; }
+    .strip { padding: 1rem 1.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .diff-list { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { padding: 3rem 1.5rem 1.5rem; }
+    .footer-top { grid-template-columns: 1fr; }
+    .hero-left { padding: 4rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Lumi<span>ère</span></a>
+  <ul class="nav-links">
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#diferenciais">Diferenciais</a></li>
+    <li><a href="#depoimentos">Depoimentos</a></li>
+    <li><a href="#agendamento">Contato</a></li>
+  </ul>
+  <a href="#agendamento" class="nav-cta">Agendar</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">✦ Estética Premium em São Paulo</div>
+    <h1 class="hero-title">
+      Beleza que<br>
+      <em>transforma</em><br>
+      a essência
+    </h1>
+    <p class="hero-subtitle">
+      Tratamentos exclusivos desenvolvidos por especialistas com anos de experiência em estética avançada. Cuide de si com a atenção que você merece.
+    </p>
+    <div class="hero-actions">
+      <a href="#agendamento" class="btn-primary">Agendar consulta</a>
+      <a href="#servicos" class="btn-ghost">Ver serviços</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-image-bg"></div>
+    <div class="hero-ornament"></div>
+    <div class="hero-abstract">
+      <svg width="320" height="320" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="160" cy="160" r="155" stroke="#c9a99a" stroke-width="0.5"/>
+        <circle cx="160" cy="160" r="120" stroke="#c9a99a" stroke-width="0.5"/>
+        <circle cx="160" cy="160" r="80" stroke="#c9a99a" stroke-width="0.5"/>
+        <line x1="5" y1="160" x2="315" y2="160" stroke="#c9a99a" stroke-width="0.5"/>
+        <line x1="160" y1="5" x2="160" y2="315" stroke="#c9a99a" stroke-width="0.5"/>
+        <line x1="50" y1="50" x2="270" y2="270" stroke="#c9a99a" stroke-width="0.3"/>
+        <line x1="270" y1="50" x2="50" y2="270" stroke="#c9a99a" stroke-width="0.3"/>
+      </svg>
+    </div>
+    <div class="hero-stat">
+      <div class="number">2.4k+</div>
+      <div class="label">Clientes atendidas</div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-item"><span class="strip-dot"></span> Estética facial avançada</div>
+  <div class="strip-item"><span class="strip-dot"></span> Tratamentos corporais</div>
+  <div class="strip-item"><span class="strip-dot"></span> Harmonização</div>
+  <div class="strip-item"><span class="strip-dot"></span> Massagens terapêuticas</div>
+  <div class="strip-item"><span class="strip-dot"></span> Cuidados especializados</div>
+  <div class="strip-item"><span class="strip-dot"></span> Protocolos exclusivos</div>
+  <div class="strip-item"><span class="strip-dot"></span> Estética facial avançada</div>
+  <div class="strip-item"><span class="strip-dot"></span> Tratamentos corporais</div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="servicos">
+  <div class="services-header reveal">
+    <div>
+      <p class="section-label">✦ O que oferecemos</p>
+      <h2 class="section-title">Nossos <em>serviços</em><br>premium</h2>
+    </div>
+    <p class="section-desc">
+      Cada tratamento é personalizado para realçar sua beleza natural com técnicas de última geração e produtos selecionados.
+    </p>
+  </div>
+  <div class="services-grid reveal">
+    <div class="service-card">
+      <div class="service-icon">🌸</div>
+      <h3 class="service-name">Limpeza de Pele Profunda</h3>
+      <p class="service-desc">Protocolo completo com extração, esfoliação enzimática e hidratação intensa para uma pele radiante e renovada.</p>
+      <div class="service-price">a partir de R$ 180</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💎</div>
+      <h3 class="service-name">Microagulhamento</h3>
+      <p class="service-desc">Estimulação do colágeno com microagulhamento profissional, reduzindo marcas, cicatrizes e linhas de expressão.</p>
+      <div class="service-price">a partir de R$ 350</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">✨</div>
+      <h3 class="service-name">Peeling Químico</h3>
+      <p class="service-desc">Renovação celular com ácidos dermocosméticos selecionados para uniformizar tom e textura da pele.</p>
+      <div class="service-price">a partir de R$ 220</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🌿</div>
+      <h3 class="service-name">Massagem Modeladora</h3>
+      <p class="service-desc">Técnica de drenagem e modelagem corporal que reduz medidas e melhora a aparência da pele com resultados visíveis.</p>
+      <div class="service-price">a partir de R$ 160</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">⚡</div>
+      <h3 class="service-name">Radiofrequência</h3>
+      <p class="service-desc">Tratamento não invasivo que firma e tonifica a pele, combatendo flacidez facial e corporal com eficácia comprovada.</p>
+      <div class="service-price">a partir de R$ 280</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🧖‍♀️</div>
+      <h3 class="service-name">Ritual Completo</h3>
+      <p class="service-desc">Experiência imersiva de beleza combinando nossos melhores tratamentos em uma sessão exclusiva e personalizada.</p>
+      <div class="service-price">a partir de R$ 520</div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENTIALS -->
+<section class="differentials" id="diferenciais">
+  <div class="diff-inner">
+    <div class="diff-text reveal">
+      <p class="section-label">✦ Por que nos escolher</p>
+      <h2 class="section-title" style="font-size:2.6rem;">Nossa<br><em>excelência</em><br>em números</h2>
+      <p class="section-desc" style="margin-top:1.2rem;">Cada detalhe é pensado para oferecer a melhor experiência em estética — do ambiente aos resultados.</p>
+    </div>
+    <div class="diff-list reveal">
+      <div class="diff-item">
+        <div class="diff-number">98%</div>
+        <div class="diff-title">Satisfação garantida</div>
+        <div class="diff-desc">Nossos clientes retornam e recomendam nossos serviços. Sua satisfação é nossa prioridade absoluta.</div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-number">12+</div>
+        <div class="diff-title">Anos de experiência</div>
+        <div class="diff-desc">Uma década de expertise em tratamentos estéticos avançados para o bem-estar da sua pele.</div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-number">30+</div>
+        <div class="diff-title">Tratamentos disponíveis</div>
+        <div class="diff-desc">Do facial ao corporal, oferecemos um portfólio completo para cada necessidade e objetivo.</div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-number">100%</div>
+        <div class="diff-title">Produtos certificados</div>
+        <div class="diff-desc">Utilizamos apenas cosméticos de alta performance certificados pela Anvisa e aprovados dermatologicamente.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="depoimentos">
+  <div class="test-inner">
+    <div class="test-header reveal">
+      <p class="section-label">✦ Depoimentos</p>
+      <h2 class="section-title">O que nossas <em>clientes</em> dizem</h2>
+    </div>
+    <div class="test-grid reveal">
+      <div class="test-card">
+        <div class="test-quote">"</div>
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">Desde que comecei os tratamentos na Lumière, minha pele mudou completamente. A equipe é extremamente atenciosa e os resultados falam por si.</p>
+        <div class="test-author">
+          <div class="test-avatar">AM</div>
+          <div>
+            <div class="test-name">Ana Maria S.</div>
+            <div class="test-role">Cliente há 2 anos</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-quote">"</div>
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">O ritual completo foi uma experiência incrível. Me senti renovada de um jeito que nunca havia sentido antes. Ambiente lindo e profissionais incríveis.</p>
+        <div class="test-author">
+          <div class="test-avatar">CB</div>
+          <div>
+            <div class="test-name">Camila B.</div>
+            <div class="test-role">Cliente há 8 meses</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-quote">"</div>
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">O microagulhamento transformou minha autoestima. Minhas cicatrizes praticamente sumiram após as sessões. Superou todas as minhas expectativas.</p>
+        <div class="test-author">
+          <div class="test-avatar">RL</div>
+          <div>
+            <div class="test-name">Renata L.</div>
+            <div class="test-role">Cliente há 1 ano</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="agendamento">
+  <div class="booking-visual reveal">
+    <div class="booking-card">
+      <div class="booking-badge">
+        <div class="booking-badge-dot"></div>
+        Horários disponíveis hoje
+      </div>
+      <div class="booking-promo">
+        Primeira consulta<br><em>gratuita</em>
+      </div>
+      <p class="booking-detail">
+        Agende sua avaliação sem custo e descubra o tratamento ideal para você com nossa equipe especializada.
+      </p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:1;">
+        <div style="background:white;border-radius:12px;padding:.8rem 1.2rem;font-size:.78rem;color:var(--warm-gray);font-weight:300;">📍 Jardins, SP</div>
+        <div style="background:white;border-radius:12px;padding:.8rem 1.2rem;font-size:.78rem;color:var(--warm-gray);font-weight:300;">📞 (11) 94567-8901</div>
+        <div style="background:white;border-radius:12px;padding:.8rem 1.2rem;font-size:.78rem;color:var(--warm-gray);font-weight:300;">🕐 Seg–Sáb, 9h–20h</div>
+      </div>
+    </div>
+  </div>
+  <div class="booking-form reveal">
+    <p class="section-label">✦ Agendamento</p>
+    <h2 class="section-title">Reserve sua<br><em>sessão</em> agora</h2>
+    <p class="section-desc">Preencha o formulário e entraremos em contato para confirmar seu horário.</p>
+    <div class="form-group">
+      <label>Nome completo</label>
+      <input type="text" placeholder="Seu nome">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Telefone</label>
+        <input type="tel" placeholder="(11) 99999-9999">
+      </div>
+      <div class="form-group">
+        <label>E-mail</label>
+        <input type="email" placeholder="seu@email.com">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Tratamento desejado</label>
+      <select>
+        <option value="" disabled selected>Selecione um serviço</option>
+        <option>Limpeza de Pele Profunda</option>
+        <option>Microagulhamento</option>
+        <option>Peeling Químico</option>
+        <option>Massagem Modeladora</option>
+        <option>Radiofrequência</option>
+        <option>Ritual Completo</option>
+        <option>Consulta / Avaliação gratuita</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Data preferida</label>
+        <input type="date">
+      </div>
+      <div class="form-group">
+        <label>Horário preferido</label>
+        <select>
+          <option value="" disabled selected>Horário</option>
+          <option>09:00</option>
+          <option>10:00</option>
+          <option>11:00</option>
+          <option>14:00</option>
+          <option>15:00</option>
+          <option>16:00</option>
+          <option>17:00</option>
+          <option>18:00</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn-form" onclick="this.textContent='Solicitação enviada ✓';this.style.background='var(--rose-dark)'">Solicitar agendamento</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">Lumi<span>ère</span></div>
+      <p class="footer-tagline">Estética avançada com toque humano. Transformamos sua beleza com cuidado, técnica e dedicação.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Serviços</h4>
+      <ul>
+        <li><a href="#">Limpeza de Pele</a></li>
+        <li><a href="#">Microagulhamento</a></li>
+        <li><a href="#">Peeling Químico</a></li>
+        <li><a href="#">Radiofrequência</a></li>
+        <li><a href="#">Ritual Completo</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Empresa</h4>
+      <ul>
+        <li><a href="#">Nossa história</a></li>
+        <li><a href="#">Equipe</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Franquias</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="#">Rua Augusta, 1234</a></li>
+        <li><a href="#">Jardins, SP</a></li>
+        <li><a href="#">(11) 94567-8901</a></li>
+        <li><a href="#">contato@lumiere.com.br</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Lumière Estética. Todos os direitos reservados.</span>
+    <div class="social-links">
+      <a href="#" class="social-link">ig</a>
+      <a href="#" class="social-link">fb</a>
+      <a href="#" class="social-link">yt</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.padding = window.scrollY > 60 ? '1rem 4rem' : '1.5rem 4rem';
+  });
+</script>
+</body>
+</html>
